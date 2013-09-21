@@ -753,6 +753,7 @@
           if (activeNode) {
             self._pos3d = [x, y, z];
             activeNode.panner.setPosition(x, y, z);
+            activeNode.connect(activeNode.panner);
           }
         }
       } else {
@@ -1160,7 +1161,7 @@
       // setup the buffer source for playback
       node.bufferSource = ctx.createBufferSource();
       node.bufferSource.buffer = cache[obj._src];
-      node.bufferSource.connect(node.panner);
+      node.bufferSource.connect(node);
       node.bufferSource.loop = loop[0];
       if (loop[0]) {
         node.bufferSource.loopStart = loop[1];
